@@ -7,10 +7,14 @@
 		// Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
 
 		function chunkArrayInGroups(arr, size) {
-			var result = [];
-			for (var i = 0; i < Things.length; i++) {
-				Things[i]
+			var r = [];
+			var tmp;
+			len = Math.ceil(arr.length / size);
+			for (var i = 0; i < len; i++) {
+				tmp = arr.slice(size*i, size*(i+1));
+				r.push(tmp);
 			}
+			console.log(r);
 		}
 
 		chunkArrayInGroups(["a", "b", "c", "d"], 2); // should return [["a", "b"], ["c", "d"]].
