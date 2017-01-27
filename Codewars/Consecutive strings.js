@@ -10,12 +10,12 @@ n being the length of the string array, if n = 0 or k > n or k <= 0 return "".
 
 // me
 function longestConsec(strarr, k) {
-    if (strarr.length = 0 || strarr.length < k || k <= 0) {
+    if (strarr.length === 0 || strarr.length < k || k <= 0) {
         return "";
     } else {
         var max = 0;
         var index = 0;
-        for (var i = 0; i < strarr.length; i++) {
+        for (let i = 0; i < strarr.length; i++) {
             if (strarr[i].length > max) {
                 max = strarr[i].length;
                 index = i;
@@ -25,5 +25,16 @@ function longestConsec(strarr, k) {
         return strarr.splice(index, k).join("");
     }
 }
-longestConsec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"], 2)
-    // top solutions
+
+// top solutions
+function longestConsec(strarr, k) {
+    var longest = "";
+    for (var i = 0; k > 0 && i <= strarr.length - k; i++) {
+        var tempArray = strarr.slice(i, i + k);
+        var tempStr = tempArray.join("");
+        if (tempStr.length > longest.length) {
+            longest = tempStr;
+        }
+    }
+    return longest;
+}
