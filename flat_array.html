@@ -41,6 +41,19 @@
       return result
     }
 
+    function flatArray2(arr) {
+      if (!Array.isArray(arr)) {
+        throw new Error('The argument passed in should be an array.');
+      }
+
+      return arr.reduce(function(acc, val) {
+        return acc.concat(Array.isArray(val) ? flatArray2(val) : val);
+      }, []);
+
+    }
+
+    const flatArray3 = arr => arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatArray2(val) : val), []);
+
     var arr1 = [1, 2, 3, 4, 5, 6]
     var arr2 = [1, 2, [3, 4, 5, 6, 7]]
     var arr3 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10, [11, 12, [13, 14]]]]]]]
