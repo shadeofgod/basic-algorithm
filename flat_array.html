@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * type check
+     */
+    if (!Array.isArray) {
+      Array.isArray = function(arg) {
+        return Object.prototype.toString.call(arg) === '[object Array]'
+      }
+    }
+
+    /**
+     * turn multi dimension array to flat
+     * @param {type: Array} arr 
+     */
+    function flatArray(arr) {
+      if (!Array.isArray(arr)) {
+        throw new Error('The parameter passed in should be an array.')
+      }
+
+      var result = []
+
+      arr.forEach(function(item) {
+        if (Array.isArray(item)) {
+          result = result.concat(flatArray(item))
+        } else {
+          result.push(item)
+        }
+      })
+
+      return result
+    }
+
+    var arr1 = [1, 2, 3, 4, 5, 6]
+    var arr2 = [1, 2, [3, 4, 5, 6, 7]]
+    var arr3 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10, [11, 12, [13, 14]]]]]]]
+  </script>
+</body>
+
+</html>
