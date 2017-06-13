@@ -21,6 +21,8 @@ function smallestCommons(arr) {
   var min = Math.min(arr[0], arr[1]);
   var max = Math.max(arr[0], arr[1]);
   var array = [];
+  // greated common divisor
+  // 递归求最大公约数
   function gcd(a, b) {
     if (a % b === 0) {
       return b;
