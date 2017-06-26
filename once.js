@@ -17,7 +17,6 @@ function before(n, func) {
     throw new TypeError('Expected a function')
   }
 
-  console.log(1)
   return function(...args) {
     while (--n > 0) {
       result = func.apply(this, args)
