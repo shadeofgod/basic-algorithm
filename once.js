@@ -18,7 +18,7 @@ function before(n, func) {
   }
 
   return function(...args) {
-    while (--n > 0) {
+    if (--n > 0) {
       result = func.apply(this, args)
     }
 
@@ -28,4 +28,8 @@ function before(n, func) {
 
     return result
   }
+}
+
+function once(func) {
+  return before(2, func)
 }
